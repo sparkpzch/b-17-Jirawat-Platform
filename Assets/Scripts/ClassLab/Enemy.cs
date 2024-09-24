@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public abstract class Enemy : Character
@@ -12,4 +13,9 @@ public abstract class Enemy : Character
     }
 
     public abstract void Behaviour();
+
+    void Start()
+    {
+        Behaviour();
+    }
 }
