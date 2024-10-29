@@ -11,7 +11,7 @@ public abstract class Weapon : MonoBehaviour
         set { damage = value; }
     }
 
-    public string owner;
+    protected string owner;
 
     public abstract void OnHitWith(Character character);
 

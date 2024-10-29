@@ -3,26 +3,26 @@ using System.Collections.Generic;
 using Unity.Mathematics;
 using UnityEngine;
 
-public class Crocodile : Enemy
+public class Crocodile : Enemy, IShootable
 {
     [SerializeField] private float attackRange = 5f;
     public Player player;
 
-    [SerializeField] private GameObject bulletPrefab;
-    [SerializeField] private Transform BulletSpawnPoint;
+    [field: SerializeField] public GameObject BulletPrefab { get; set; }
+    [field: SerializeField] public Transform BulletSpawnPoint { get; set; }
 
-    [SerializeField] private float bulletSpawnTime;
-    [SerializeField] private float bulletTimer;
+    [field: SerializeField] public float BulletSpawnTime { get; set; }
+    [field: SerializeField] public float BulletTimer { get; set; }
 
     void Update()
     {
-        bulletTimer -= Time.deltaTime;
+        BulletTimer -= Time.deltaTime;
 
         Behaviour();
 
-        if (bulletTimer < 0f)
+        if (BulletTimer < 0f)
         {
-            bulletTimer = bulletSpawnTime;
+            BulletTimer = BulletSpawnTime;
         }
     }
 
@@ -37,11 +37,12 @@ public class Crocodile : Enemy
         }
     }
 
-    private void Shoot()
+    public void Shoot()
     {
-        if (bulletTimer <= 0)
+        if (BulletTimer <= 0)
         {
-            Instantiate(bulletPrefab, BulletSpawnPoint.position, Quaternion.identity);
+            Instantiate(BulletPrefab, BulletSpawnPoint.position, Quaternion.identity);
+            Destroy(BulletPrefab, 3f);
         }
     }
 }
