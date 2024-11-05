@@ -1,8 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class PlayerController : MonoBehaviour
-{
+public class PlayerController : MonoBehaviour {
 
 	public float maxSpeed = 10f;
 	bool facingRight = true;
@@ -17,23 +16,19 @@ public class PlayerController : MonoBehaviour
 	public float jumpForce = 700.0f;
 
 	// Use this for initialization
-	void Start()
-	{
-		r2d = GetComponent<Rigidbody2D>();
+	void Start () {
+		r2d = GetComponent<Rigidbody2D>	();
 		anim = GetComponent<Animator>();
 	}
-
-	void Update()
-	{
-		if (grounded && Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.UpArrow))
-		{
+	
+	void Update(){
+		if( grounded && Input.GetKeyDown(KeyCode.Space) ){
 			anim.SetBool("Ground", false);
 			r2d.AddForce(new Vector2(0, jumpForce));
 		}
 	}
 
-	void FixedUpdate()
-	{
+	void FixedUpdate () {
 
 		grounded = Physics2D.OverlapCircle(groundCheck.position, groundRadius, whatIsGround);
 		anim.SetBool("Ground", grounded);
@@ -44,16 +39,15 @@ public class PlayerController : MonoBehaviour
 
 		anim.SetFloat("Speed", Mathf.Abs(move));
 
-		r2d.velocity = new Vector2(move * maxSpeed, r2d.velocity.y);
+		r2d.velocity = new Vector2(move*maxSpeed, r2d.velocity.y);
 
-		if (move > 0 && !facingRight)
+		if(move > 0 && !facingRight)
 			Flip();
-		else if (move < 0 && facingRight)
+		else if( move < 0 && facingRight )
 			Flip();
 	}
 
-	void Flip()
-	{
+	void Flip(){
 		facingRight = !facingRight;
 		Vector3 theScale = transform.localScale;
 		theScale.x *= -1;
