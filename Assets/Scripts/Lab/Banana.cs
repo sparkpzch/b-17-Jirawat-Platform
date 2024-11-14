@@ -4,12 +4,11 @@ using UnityEngine;
 
 public class Banana : Weapon
 {
-    // initialize variables
     [SerializeField] private float speed;
 
     private void Start()
     {
-        Damage = 30;
+        Damage = 5;
         speed = 4f * GetShootDirection();
     }
 
@@ -18,7 +17,6 @@ public class Banana : Weapon
         Move();
     }
 
-    // override abstract methods
     public override void Move()
     {
         float newX = transform.position.x + speed * Time.fixedDeltaTime;

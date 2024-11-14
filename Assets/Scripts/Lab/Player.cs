@@ -23,7 +23,7 @@ public class Player : Character, IShootable
     }
     private void Start()
     {
-        Init(100);
+        Init(50);
         WaitTime = 0.0f;
         ReloadTime = 1.0f;
     }

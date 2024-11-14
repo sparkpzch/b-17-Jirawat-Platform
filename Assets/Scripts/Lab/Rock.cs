@@ -4,11 +4,9 @@ using UnityEngine;
 
 public class Rock : Weapon
 {
-    // variable for movement
     private Rigidbody2D rb2d;
     private Vector2 force;
 
-    // start
     private void Start()
     {
         rb2d = GetComponent<Rigidbody2D>();
@@ -17,10 +15,8 @@ public class Rock : Weapon
         Move();
     }
 
-    // override abstract methods
     public override void Move()
     {
-        //Debug.Log("Rock move with Rigidbody:force");
         rb2d.AddForce(force, ForceMode2D.Impulse);
     }
 

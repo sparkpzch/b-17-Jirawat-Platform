@@ -5,7 +5,6 @@ using UnityEngine;
 
 public class Crocodile : Enemy, IShootable
 {
-    // show in unity inspector
     float attackRange;
     public float AttackRange { get { return attackRange; } set { attackRange = value; } }
 
@@ -33,7 +32,6 @@ public class Crocodile : Enemy, IShootable
         Behavior();
     }
 
-    // override abstract method
     public override void Behavior()
     {
         Vector2 distance = player.transform.position - transform.position;
@@ -45,7 +43,6 @@ public class Crocodile : Enemy, IShootable
         }
     }
 
-    // method
     public void Shoot()
     {
         if (WaitTime >= ReloadTime)

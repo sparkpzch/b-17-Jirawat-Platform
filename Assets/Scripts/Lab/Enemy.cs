@@ -4,7 +4,6 @@ using UnityEngine;
 
 public abstract class Enemy : Character
 {
-    // field & property
     [SerializeField] int damageHit;
     public int DamageHit
     {
@@ -23,6 +22,5 @@ public abstract class Enemy : Character
         Behavior();
     }
 
-    // abstract method
     public abstract void Behavior();
 }

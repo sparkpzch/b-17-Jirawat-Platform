@@ -6,7 +6,6 @@ using UnityEngine;
 
 public abstract class Weapon : MonoBehaviour
 {
-    // field & property
     [SerializeField] protected int damage;
     public int Damage
     {
@@ -21,11 +20,9 @@ public abstract class Weapon : MonoBehaviour
     }
     protected IShootable shooter;
 
-    // abstract methods
     public abstract void OnHitWith(Character character);
     public abstract void Move();
 
-    // method
     public void Init(int damage, IShootable _owner)
     {
         Damage = damage;

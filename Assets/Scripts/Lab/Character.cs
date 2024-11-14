@@ -4,11 +4,9 @@ using UnityEngine;
 
 public abstract class Character : MonoBehaviour
 {
-    // attribute that makes field show and available to edit in Inspector
-    [SerializeField] private int health;
+    [SerializeField] private float health;
 
-    // property & field
-    public int Health
+    public float Health
     {
         get
         {
@@ -23,7 +21,6 @@ public abstract class Character : MonoBehaviour
     public Animator anim;
     public Rigidbody2D rb;
 
-    // method
     public bool IsDead()
     {
         if (health <= 0)
@@ -34,16 +31,19 @@ public abstract class Character : MonoBehaviour
         else return false;
     }
 
-    public void TakeDamage(int damage)
+    public void TakeDamage(float damage)
     {
         Health -= damage;
         Debug.Log("Take Damage: " + damage + " >> Health: " + Health);
+        if (IsDead())
+        {
+            Debug.Log("Dead");
+        }
     }
 
-    public virtual void Init(int newHealth)
+    public virtual void Init(float newHealth)
     {
         Health = newHealth;
-        //get components for prefabs
         anim = GetComponent<Animator>();
         rb = GetComponent<Rigidbody2D>();
     }
